@@ -12,6 +12,7 @@ apply-confirm.png
 status-before.png
 status.png
 restore-confirm.png
+social-preview.png
 ```
 
 Before committing, verify that assets contain no account details, access tokens, private source code, repository URLs, or identifying local paths.

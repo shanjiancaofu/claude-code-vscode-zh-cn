@@ -10,6 +10,7 @@ media/apply-confirm.png
 media/status-before.png
 media/status.png
 media/restore-confirm.png
+media/social-preview.png
 ```
 
 原始截图和 MP4 保存在 Git 忽略的 `media/source/`，不得直接提交。
