@@ -1,0 +1,37 @@
+name: Bug 报告
+description: 报告检测、备份、补丁或恢复问题
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: environment
+    attributes:
+      label: 运行环境
+      options: [Windows, macOS, Linux, WSL, Remote SSH, Dev Container, Other]
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: 版本信息
+      description: Claude Code、VS Code 和本工具版本
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: 输出或错误信息
+      description: 请删除 Token、账户、代码和私有路径。
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: 隐私确认
+      options:
+        - label: 我确认提交内容不包含密钥、Token 或私有代码。
+          required: true

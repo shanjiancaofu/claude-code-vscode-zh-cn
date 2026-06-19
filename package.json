@@ -9,6 +9,10 @@
     "type": "git",
     "url": "https://github.com/shanjiancaofu/claude-code-vscode-zh-cn.git"
   },
+  "homepage": "https://github.com/shanjiancaofu/claude-code-vscode-zh-cn#readme",
+  "bugs": {
+    "url": "https://github.com/shanjiancaofu/claude-code-vscode-zh-cn/issues"
+  },
   "engines": {
     "vscode": "^1.98.0",
     "node": ">=18"

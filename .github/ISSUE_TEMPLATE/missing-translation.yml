@@ -1,0 +1,33 @@
+name: 遗漏英文
+description: 报告尚未汉化或翻译不准确的 UI 文案
+title: "[Translation] "
+labels: ["translation"]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Claude Code 版本
+      placeholder: 例如 2.1.183
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: 英文原文
+    validations:
+      required: true
+  - type: input
+    id: target
+    attributes:
+      label: 建议译文
+  - type: textarea
+    id: location
+    attributes:
+      label: 所在界面与复现步骤
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: 截图
+      description: 请先遮盖账户、代码和本地路径等隐私信息。
