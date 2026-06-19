@@ -106,7 +106,7 @@ npm run package
 安装生成的 VSIX：
 
 ```bash
-code --install-extension claude-code-zh-cn-patch-helper-0.1.0.vsix
+code --install-extension claude-code-zh-cn-patch-helper-0.1.1.vsix
 ```
 
 随后打开 VS Code 命令面板，执行：
@@ -152,6 +152,18 @@ npm run restore
 ```
 
 ## 更新日志
+
+### 2026-06-20（v0.1.1，适配 Claude Code VS Code 2.1.183）
+
+- `translations/zh-CN.json`：共 1,431 条分组映射，覆盖 519 条不重复英文文案
+  - `ui`：454 条 Webview UI 翻译
+  - `host`：465 条扩展主程序与命令翻译
+  - `rawFragments`：16 条动态模板片段翻译
+  - `package`：496 条设置、命令和扩展清单翻译
+- 补齐模型设置、终端提示、CLAUDE.md 提示和输入框快捷键等可见文案
+- 增量更新补丁时沿用首次原始备份，恢复操作可完整还原英文文件
+- 检测到补丁之外的文件改动时停止写入，避免生成不可信备份
+- 新增增量更新与完整恢复自动化测试
 
 ### 2026-06-20（v0.1.0，适配 Claude Code VS Code 2.1.183）
 

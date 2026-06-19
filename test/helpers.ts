@@ -15,7 +15,7 @@ export async function createFakeExtension(version = "2.1.183"): Promise<{ root: 
     contributes: { commands: [{ title: "Claude Code: Show Logs" }] }
   }, null, 2));
   await fs.writeFile(path.join(root, "extension.js"), 'const title="Claude Code: Show Logs";\n');
-  await fs.writeFile(path.join(root, "webview/index.js"), 'createElement("button",null,"Accept");\n');
+  await fs.writeFile(path.join(root, "webview/index.js"), 'createElement("button",null,"Accept");createElement("h2",null,"Model");\n');
   return { root, state };
 }
 

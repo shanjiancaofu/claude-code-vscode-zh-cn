@@ -5,6 +5,8 @@ export interface RuntimeOptions {
   mode: RuntimeMode;
   dryRun?: boolean;
   targetPath?: string;
+  /** Internal/test override. Normal users always use the bundled translation pack. */
+  translationPath?: string;
 }
 
 export interface TargetExtensionInfo {

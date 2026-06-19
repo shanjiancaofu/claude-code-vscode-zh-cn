@@ -90,7 +90,7 @@ Download the latest `.vsix` from [GitHub Releases](https://github.com/shanjianca
 ```bash
 npm run compile
 npm run package
-code --install-extension claude-code-zh-cn-patch-helper-0.1.0.vsix
+code --install-extension claude-code-zh-cn-patch-helper-0.1.1.vsix
 ```
 
 Then open the Command Palette and run:

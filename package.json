@@ -2,7 +2,7 @@
   "name": "claude-code-zh-cn-patch-helper",
   "displayName": "Claude Code Zh-CN Patch Helper",
   "description": "Unofficial zh-CN UI patch helper for the Claude Code VS Code extension.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "shanjiancaofu",
   "license": "MIT",
   "repository": {

@@ -1,16 +1,16 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { createBackup, discardBackup, finalizeBackup } from "./backup";
+import { createBackup, discardBackup, extendBackup, finalizeBackup, findLatestBackup, isBackupCompatible } from "./backup";
 import { detectLatestExtension } from "./detector";
 import { saveReport } from "./report";
 import { scanTarget } from "./scanner";
 import { PatchReport, RuntimeOptions } from "./types";
 import { loadTranslationPack } from "./translation";
-import { writeFileAtomic } from "../utils/fs";
+import { writeFileAtomic, writeJson } from "../utils/fs";
 
 export async function applyPatch(options: RuntimeOptions): Promise<PatchReport> {
   const target = await detectLatestExtension(options.targetPath);
-  const pack = await loadTranslationPack();
+  const pack = await loadTranslationPack(options.translationPath);
   const scanned = await scanTarget(target, pack);
   const files = scanned.map(({ originalContent: _original, patchedContent: _patched, ...file }) => file);
   const warnings: string[] = [];
@@ -36,16 +36,31 @@ export async function applyPatch(options: RuntimeOptions): Promise<PatchReport> 
   }
 
   const changed = scanned.filter(file => file.replacementCount > 0);
-  const backup = await createBackup(target, changed);
+  const latestBackup = await findLatestBackup(target);
+  const reuseBackup = latestBackup ? await isBackupCompatible(latestBackup, target) : false;
+  if (latestBackup && !reuseBackup) {
+    throw new Error("检测到插件文件在补丁之外被修改。为保护原始备份，请先恢复或重新安装 Claude Code 后再应用补丁。");
+  }
+  const backup = reuseBackup && latestBackup ? latestBackup : await createBackup(target, changed);
+  const previousManifest = reuseBackup ? structuredClone(backup.manifest) : undefined;
+  let addedBackupPaths: string[] = [];
   report.backupPath = backup.directory;
   try {
+    if (reuseBackup) {
+      addedBackupPaths = await extendBackup(backup, changed);
+      warnings.push("已沿用首次应用补丁时的原始备份，可完整恢复英文原文件。");
+    }
     for (const file of changed) await writeFileAtomic(file.absolutePath, file.patchedContent);
     await finalizeBackup(backup);
   } catch (error) {
-    for (const entry of backup.manifest.files) {
-      await fs.copyFile(path.join(backup.directory, entry.backupPath), path.join(target.path, entry.relativePath));
+    for (const file of changed) await writeFileAtomic(file.absolutePath, file.originalContent);
+    if (previousManifest) {
+      backup.manifest = previousManifest;
+      await writeJson(path.join(backup.directory, "manifest.json"), previousManifest);
+      for (const backupPath of addedBackupPaths) await fs.rm(path.join(backup.directory, backupPath), { force: true });
+    } else {
+      await discardBackup(backup);
     }
-    await discardBackup(backup);
     report.errors.push(error instanceof Error ? error.message : String(error));
     await saveReport(report);
     throw new Error(`应用补丁失败，已回滚原文件：${report.errors[0]}`);

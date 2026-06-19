@@ -2,7 +2,7 @@
   "meta": {
     "name": "zh-CN",
     "description": "Simplified Chinese UI translations for Claude Code VS Code",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "targetExtension": "anthropic.claude-code"
   },
   "locale": "zh-CN",
@@ -13,6 +13,7 @@
     "Add Marketplace & Continue": "添加市场并继续",
     "Ask Claude for help": "向 Claude 求助",
     "Ask before editing": "编辑前询问",
+    "Customize": "自定义",
     "Authenticating...": "正在验证身份…",
     "Auto mode is enabled": "自动模式已启用",
     "Available": "可用",
@@ -70,6 +71,7 @@
     "Loading...": "正在加载…",
     "Manage Plugins": "管理插件",
     "Manage usage on claude.ai": "在 claude.ai 管理用量",
+    "Model": "模型",
     "Modes": "模式",
     "Network Access": "网络访问",
     "New worktree name": "新 Worktree 名称",
@@ -284,6 +286,7 @@
     "Output styles": "输出风格",
     "Permissions": "权限",
     "Plugins": "插件",
+    "Prefer the Terminal experience?": "更喜欢终端体验？",
     "Press Shift-Tab twice, or click the mode picker twice, to cycle into Plan Mode. This forces Claude to write a detailed plan before it can edit any code.": "按两次 Shift+Tab，或点击两次模式选择器进入计划模式。Claude 必须先编写详细计划，然后才能编辑代码。",
     "Prompt Claude to write code": "让 Claude 编写代码",
     "Reference a project file with @mention": "使用 @ 引用项目文件",
@@ -295,6 +298,8 @@
     "Search sessions…": "搜索会话…",
     "Session (5hr)": "会话（5 小时）",
     "Set how hard the model tries": "设置模型的思考强度",
+    "Switch back in Settings.": "在设置中切回。",
+    "Switch models when a message is flagged": "消息被标记时切换模型",
     "Skills": "技能",
     "Subagents": "子代理",
     "Tell Claude what to do instead": "告诉 Claude 应该怎么做",
@@ -306,7 +311,10 @@
     "View help docs": "查看帮助文档",
     "Weekly (7 day)": "每周（7 天）",
     "Weekly Sonnet": "Sonnet 每周用量",
+    "When safety measures flag a message, automatically switch to a different model to keep chatting. When off, your session will pause instead.": "当安全措施标记消息时，自动切换到其他模型以继续对话。关闭后，会话将暂停。",
     "What went wrong?": "出了什么问题？",
+    "Make a CLAUDE.md file for instructions Claude will read every single time.": "创建 CLAUDE.md 文件，写下 Claude 每次都会读取的指令。",
+    "ctrl esc": "Ctrl+Esc",
     "Edit Notebook Cell ": "编辑 Notebook 单元格 ",
     "Read ": "读取 ",
     "Web": "网页",
@@ -937,7 +945,9 @@
     "`until ${": "`截至 ${",
     "`in ${o}m`": "`${o} 分钟后`",
     "`in ${r}h`": "`${r} 小时后`",
-    "`in ${s}d`": "`${s} 天后`"
+    "`in ${s}d`": "`${s} 天后`",
+    " to attach selected text": " 附加所选文本",
+    " to focus or unfocus Claude": " 聚焦或取消聚焦 Claude"
   },
   "package": {
     "A new Git worktree will be created in a sibling directory": "将在同级目录中创建新的 Git Worktree",

@@ -1,6 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { TOOL_VERSION, TARGET_EXTENSION_ID } from "./constants";
+import { sha256File } from "./checksum";
 import { BackupFileEntry, BackupManifest, TargetExtensionInfo } from "./types";
 import type { ScannedFile } from "./scanner";
 import { backupRoot, safeBackupName, timestampId } from "../utils/path";
@@ -77,4 +78,46 @@ export async function findLatestBackup(target: TargetExtensionInfo): Promise<Bac
     }
   }
   return matches.sort((a, b) => b.manifest.createdAt.localeCompare(a.manifest.createdAt))[0];
+}
+
+export async function isBackupCompatible(backup: BackupHandle, target: TargetExtensionInfo): Promise<boolean> {
+  if (!backup.manifest.files.length) return false;
+  const checks = await Promise.all(backup.manifest.files.map(async entry => {
+    try {
+      const currentHash = await sha256File(path.join(target.path, entry.relativePath));
+      return currentHash === entry.sha256After || currentHash === entry.sha256Before;
+    } catch {
+      return false;
+    }
+  }));
+  return checks.every(Boolean);
+}
+
+export async function extendBackup(backup: BackupHandle, files: ScannedFile[]): Promise<string[]> {
+  const addedBackupPaths: string[] = [];
+  const entries = new Map(backup.manifest.files.map(entry => [entry.relativePath, entry]));
+  for (const file of files) {
+    const existing = entries.get(file.relativePath);
+    if (existing) {
+      existing.absolutePath = file.absolutePath;
+      existing.replacementCount += file.replacementCount;
+      existing.sha256After = file.sha256After;
+      continue;
+    }
+    const backupPath = path.join("files", safeBackupName(file.relativePath));
+    await fs.copyFile(file.absolutePath, path.join(backup.directory, backupPath));
+    addedBackupPaths.push(backupPath);
+    const entry: BackupFileEntry = {
+      relativePath: file.relativePath,
+      absolutePath: file.absolutePath,
+      backupPath,
+      replacementCount: file.replacementCount,
+      sha256Before: file.sha256Before,
+      sha256After: file.sha256After
+    };
+    backup.manifest.files.push(entry);
+    entries.set(entry.relativePath, entry);
+  }
+  backup.manifest.toolVersion = TOOL_VERSION;
+  return addedBackupPaths;
 }
