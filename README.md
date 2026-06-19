@@ -115,6 +115,25 @@ Claude Code Zh-CN Patch: Restore Before Uninstall
 npm run restore
 ```
 
+## 更新日志
+
+### 2026-06-20（v0.1.0，适配 Claude Code VS Code 2.1.183）
+
+- `translations/zh-CN.json`：共 1,422 条分组映射，覆盖 510 条不重复英文文案
+  - `ui`：447 条 Webview UI 翻译
+  - `host`：465 条扩展主程序与命令翻译
+  - `rawFragments`：14 条动态模板片段翻译
+  - `package`：496 条设置、命令和扩展清单翻译
+- 支持修改 `webview/index.js`、`extension.js` 和 `package.json` 中的可见 UI 文案
+- 新增 TypeScript 共享 Core，CLI 与 VS Code 命令共用检测、扫描、替换和恢复逻辑
+- 新增 dry-run、状态检查、JSON 报告、外置时间戳备份和 SHA-256 安全恢复
+- 新增 Windows、macOS、Linux、WSL、Remote SSH、Dev Container 等环境检测
+- 新增 Apply、Restore、Restore Before Uninstall、Check Status 和 Show Report 命令
+- 新增 GitHub Actions CI、标签触发 Release、VSIX 构建及 SHA-256 校验文件
+- 新增 Bug、遗漏翻译 Issue 模板、PR 模板、贡献指南和安全说明
+
+完整版本记录见 [CHANGELOG.md](./CHANGELOG.md)。
+
 ## 文档
 
 - [使用说明](./docs/usage.md)
