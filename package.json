@@ -1,0 +1,79 @@
+{
+  "name": "claude-code-zh-cn-patch-helper",
+  "displayName": "Claude Code Zh-CN Patch Helper",
+  "description": "Unofficial zh-CN UI patch helper for the Claude Code VS Code extension.",
+  "version": "0.1.0",
+  "publisher": "shanjiancaofu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shanjiancaofu/claude-code-vscode-zh-cn.git"
+  },
+  "engines": {
+    "vscode": "^1.98.0",
+    "node": ">=18"
+  },
+  "categories": ["Other"],
+  "keywords": ["claude", "chinese", "zh-cn", "translation", "localization"],
+  "main": "./dist/src/extension.js",
+  "bin": {
+    "claude-code-zh-cn-patch": "./dist/src/cli/index.js"
+  },
+  "extensionKind": ["workspace", "ui"],
+  "activationEvents": [
+    "onCommand:claudeCodeZhCnPatch.apply",
+    "onCommand:claudeCodeZhCnPatch.restore",
+    "onCommand:claudeCodeZhCnPatch.restoreBeforeUninstall",
+    "onCommand:claudeCodeZhCnPatch.status",
+    "onCommand:claudeCodeZhCnPatch.report"
+  ],
+  "contributes": {
+    "commands": [
+      { "command": "claudeCodeZhCnPatch.apply", "title": "Claude Code Zh-CN Patch: Apply Patch" },
+      { "command": "claudeCodeZhCnPatch.restore", "title": "Claude Code Zh-CN Patch: Restore Original Files" },
+      { "command": "claudeCodeZhCnPatch.restoreBeforeUninstall", "title": "Claude Code Zh-CN Patch: Restore Before Uninstall" },
+      { "command": "claudeCodeZhCnPatch.status", "title": "Claude Code Zh-CN Patch: Check Status" },
+      { "command": "claudeCodeZhCnPatch.report", "title": "Claude Code Zh-CN Patch: Show Patch Report" }
+    ],
+    "configuration": {
+      "title": "Claude Code Zh-CN Patch",
+      "properties": {
+        "claudeCodeZhCnPatch.customClaudeCodePath": {
+          "type": "string",
+          "default": "",
+          "description": "Custom path to the Claude Code extension directory. Leave empty to auto-detect."
+        },
+        "claudeCodeZhCnPatch.showReportAfterPatch": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the patch report after applying or restoring."
+        },
+        "claudeCodeZhCnPatch.dryRunBeforeApply": {
+          "type": "boolean",
+          "default": true,
+          "description": "Preview changes and ask for confirmation before applying."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "apply": "tsx src/cli/index.ts apply",
+    "restore": "tsx src/cli/index.ts restore",
+    "status": "tsx src/cli/index.ts status",
+    "report": "tsx src/cli/index.ts report",
+    "dry-run": "tsx src/cli/index.ts apply --dry-run",
+    "test": "npm run compile && node --test dist/test/*.test.js",
+    "check": "npm run compile && npm test",
+    "package": "npm run compile && vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.98.0",
+    "@vscode/vsce": "^3.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

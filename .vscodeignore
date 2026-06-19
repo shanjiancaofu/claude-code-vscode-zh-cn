@@ -1,0 +1,14 @@
+.git/**
+.gitignore
+.github/**
+test/**
+src/**
+scripts/**
+.vscode/**
+bin/**
+dist/test/**
+docs/*.private.md
+docs/*-orin.md
+tsconfig.json
+*.vsix
+node_modules/**
