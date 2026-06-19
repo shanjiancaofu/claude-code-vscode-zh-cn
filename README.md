@@ -14,7 +14,43 @@
 
 ## 效果预览
 
-> 📸 截图与 GIF 正在制作。媒体文件约定见 [docs/screenshots.md](./docs/screenshots.md)，后续将展示汉化前后对比和完整备份恢复流程。
+### 汉化前后对比
+
+![Claude Code 汉化前后对比](./media/before-after.png)
+
+### 应用补丁效果
+
+<p align="center">
+  <img src="./media/apply-patch.gif" width="480" alt="Claude Code 中文补丁应用演示">
+</p>
+
+<details>
+<summary>查看命令面板</summary>
+
+![Claude Code Zh-CN Patch 命令面板](./media/commands.png)
+
+</details>
+
+<details>
+<summary>查看完整补丁与恢复流程</summary>
+
+#### 应用补丁确认
+
+![应用补丁确认](./media/apply-confirm.png)
+
+#### 应用前状态
+
+![应用补丁前状态](./media/status-before.png)
+
+#### 应用后状态
+
+![应用补丁后状态](./media/status.png)
+
+#### 恢复原始文件确认
+
+![恢复原始文件确认](./media/restore-confirm.png)
+
+</details>
 
 ## 功能
 

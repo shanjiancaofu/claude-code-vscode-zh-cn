@@ -1,5 +1,19 @@
 # 截图与 GIF 制作规范
 
+当前已发布：
+
+```text
+media/before-after.png
+media/apply-patch.gif
+media/commands.png
+media/apply-confirm.png
+media/status-before.png
+media/status.png
+media/restore-confirm.png
+```
+
+原始截图和 MP4 保存在 Git 忽略的 `media/source/`，不得直接提交。
+
 媒体文件统一放入 `media/`，避免出现账户、邮箱、Token、仓库地址、真实项目代码和完整本地路径。
 
 ## 约定文件

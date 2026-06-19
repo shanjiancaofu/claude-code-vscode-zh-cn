@@ -17,4 +17,5 @@ docs/*-orin.md
 coverage/
 .vscode-test/
 .vsce/
+media/source/
 .DS_Store

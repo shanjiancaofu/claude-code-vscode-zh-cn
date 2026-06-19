@@ -9,6 +9,7 @@ bin/**
 dist/test/**
 docs/*.private.md
 docs/*-orin.md
+media/source/**
 tsconfig.json
 *.vsix
 node_modules/**

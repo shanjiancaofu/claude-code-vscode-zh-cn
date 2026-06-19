@@ -12,7 +12,43 @@ This project does **not** contain or redistribute Claude Code, modified VSIX pac
 
 ## Preview
 
-> 📸 Screenshots and a GIF are being prepared. See [the media guide](./docs/screenshots.md) for the planned before/after and backup/restore demos.
+### Before and after
+
+![Claude Code before and after the zh-CN patch](./media/before-after.png)
+
+### Patch result
+
+<p align="center">
+  <img src="./media/apply-patch.gif" width="480" alt="Claude Code zh-CN patch demo">
+</p>
+
+<details>
+<summary>Show Command Palette</summary>
+
+![Claude Code Zh-CN Patch commands](./media/commands.png)
+
+</details>
+
+<details>
+<summary>Show the complete patch and restore workflow</summary>
+
+#### Apply confirmation
+
+![Apply patch confirmation](./media/apply-confirm.png)
+
+#### Status before applying
+
+![Status before applying the patch](./media/status-before.png)
+
+#### Status after applying
+
+![Status after applying the patch](./media/status.png)
+
+#### Restore confirmation
+
+![Restore original files confirmation](./media/restore-confirm.png)
+
+</details>
 
 ## Features
 
