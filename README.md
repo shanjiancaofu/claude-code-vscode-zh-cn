@@ -6,11 +6,29 @@
 
 [![CI](https://github.com/shanjiancaofu/claude-code-vscode-zh-cn/actions/workflows/ci.yml/badge.svg)](https://github.com/shanjiancaofu/claude-code-vscode-zh-cn/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/shanjiancaofu/claude-code-vscode-zh-cn?display_name=tag)](https://github.com/shanjiancaofu/claude-code-vscode-zh-cn/releases)
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/shanjiancaofu.claude-code-zh-cn-patch-helper?label=VS%20Code%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=shanjiancaofu.claude-code-zh-cn-patch-helper)
+[![Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/shanjiancaofu.claude-code-zh-cn-patch-helper)](https://marketplace.visualstudio.com/items?itemName=shanjiancaofu.claude-code-zh-cn-patch-helper)
 [![License](https://img.shields.io/github/license/shanjiancaofu/claude-code-vscode-zh-cn)](./LICENSE)
 
 这是一个非官方、由用户主动触发的 Claude Code VS Code 扩展中文 UI 补丁工具。
 
 本项目不包含、不分发 Claude Code 插件本体、修改后的 VSIX 或 Anthropic 源码。用户需要自行安装官方 Claude Code 扩展；工具只在用户确认后替换本地扩展中的可见 UI 文案。
+
+## 安装与首次使用
+
+1. 先安装官方 `Claude Code for VS Code` 扩展。
+2. 从 [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=shanjiancaofu.claude-code-zh-cn-patch-helper) 安装本扩展，或在扩展面板搜索 `Claude Code Zh-CN Patch Helper`。
+3. 打开命令面板（`Ctrl+Shift+P`），执行 `Claude Code Zh-CN Patch: Apply Patch`。
+4. 核对目标目录和替换数量，确认应用补丁。
+5. 执行 `Developer: Reload Window` 重新加载窗口。
+
+也可以通过命令行安装：
+
+```bash
+code --install-extension shanjiancaofu.claude-code-zh-cn-patch-helper
+```
+
+> 安装本扩展不会自动修改 Claude Code。只有用户主动执行 `Apply Patch` 并确认后才会写入文件。
 
 ## 效果预览
 
@@ -62,7 +80,9 @@
 - 提供状态检查和 JSON 补丁报告
 - 不收集遥测，不上传文件，不读取用户项目代码
 
-## 方式一：源码直跑
+## 其他安装方式
+
+### 源码直跑
 
 ```bash
 git clone https://github.com/shanjiancaofu/claude-code-vscode-zh-cn.git
@@ -91,7 +111,7 @@ npm run report
 npm run apply -- --target /path/to/anthropic.claude-code-version
 ```
 
-## 方式二：安装 VSIX
+### 安装 VSIX
 
 普通用户可从 [Releases](https://github.com/shanjiancaofu/claude-code-vscode-zh-cn/releases) 下载最新 `.vsix`，然后在 VS Code 中执行 `Extensions: Install from VSIX...`。
 
@@ -106,7 +126,7 @@ npm run package
 安装生成的 VSIX：
 
 ```bash
-code --install-extension claude-code-zh-cn-patch-helper-0.1.1.vsix
+code --install-extension claude-code-zh-cn-patch-helper-0.1.2.vsix
 ```
 
 随后打开 VS Code 命令面板，执行：
@@ -116,10 +136,6 @@ code --install-extension claude-code-zh-cn-patch-helper-0.1.1.vsix
 - `Claude Code Zh-CN Patch: Restore Before Uninstall`
 - `Claude Code Zh-CN Patch: Check Status`
 - `Claude Code Zh-CN Patch: Show Patch Report`
-
-## 方式三：Marketplace
-
-发布后可在扩展市场搜索 `Claude Code Zh-CN Patch Helper`。安装不会自动修改 Claude Code；必须由用户主动执行 `Apply Patch` 并确认目标路径和修改数量。
 
 ## 配置项
 
@@ -152,6 +168,12 @@ npm run restore
 ```
 
 ## 更新日志
+
+### 2026-06-20（v0.1.2，Marketplace 展示优化）
+
+- 新增原创 Marketplace 图标和协调的浅色展示背景
+- README 优先展示 Marketplace 安装、首次应用补丁和重新加载步骤
+- 中英文 README 同步优化，源码与 VSIX 调整为其他安装方式
 
 ### 2026-06-20（v0.1.1，适配 Claude Code VS Code 2.1.183）
 

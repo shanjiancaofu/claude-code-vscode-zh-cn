@@ -6,9 +6,27 @@ An unofficial, user-triggered Simplified Chinese UI patch helper for the officia
 
 [![CI](https://github.com/shanjiancaofu/claude-code-vscode-zh-cn/actions/workflows/ci.yml/badge.svg)](https://github.com/shanjiancaofu/claude-code-vscode-zh-cn/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/shanjiancaofu/claude-code-vscode-zh-cn?display_name=tag)](https://github.com/shanjiancaofu/claude-code-vscode-zh-cn/releases)
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/shanjiancaofu.claude-code-zh-cn-patch-helper?label=VS%20Code%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=shanjiancaofu.claude-code-zh-cn-patch-helper)
+[![Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/shanjiancaofu.claude-code-zh-cn-patch-helper)](https://marketplace.visualstudio.com/items?itemName=shanjiancaofu.claude-code-zh-cn-patch-helper)
 [![License](https://img.shields.io/github/license/shanjiancaofu/claude-code-vscode-zh-cn)](./LICENSE)
 
 This project does **not** contain or redistribute Claude Code, modified VSIX packages, or Anthropic source code. It only patches visible UI strings in a locally installed official extension after explicit user confirmation.
+
+## Install and get started
+
+1. Install the official `Claude Code for VS Code` extension.
+2. Install this helper from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=shanjiancaofu.claude-code-zh-cn-patch-helper), or search for `Claude Code Zh-CN Patch Helper` in the Extensions view.
+3. Open the Command Palette (`Ctrl+Shift+P`) and run `Claude Code Zh-CN Patch: Apply Patch`.
+4. Review the target directory and replacement count, then confirm.
+5. Run `Developer: Reload Window`.
+
+Command-line installation:
+
+```bash
+code --install-extension shanjiancaofu.claude-code-zh-cn-patch-helper
+```
+
+> Installing this helper does not modify Claude Code automatically. Files are changed only after the user explicitly runs and confirms `Apply Patch`.
 
 ## Preview
 
@@ -60,7 +78,9 @@ This project does **not** contain or redistribute Claude Code, modified VSIX pac
 - Status checks and JSON patch reports
 - No telemetry, uploads, or access to project source code
 
-## Source usage
+## Other installation methods
+
+### Source usage
 
 ```bash
 git clone https://github.com/shanjiancaofu/claude-code-vscode-zh-cn.git
@@ -83,14 +103,14 @@ Pass a non-standard extension location after `--`:
 npm run apply -- --target /path/to/anthropic.claude-code-version
 ```
 
-## VSIX usage
+### VSIX usage
 
 Download the latest `.vsix` from [GitHub Releases](https://github.com/shanjiancaofu/claude-code-vscode-zh-cn/releases), or build it locally:
 
 ```bash
 npm run compile
 npm run package
-code --install-extension claude-code-zh-cn-patch-helper-0.1.1.vsix
+code --install-extension claude-code-zh-cn-patch-helper-0.1.2.vsix
 ```
 
 Then open the Command Palette and run:

@@ -2,7 +2,7 @@
   "meta": {
     "name": "zh-CN",
     "description": "Simplified Chinese UI translations for Claude Code VS Code",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "targetExtension": "anthropic.claude-code"
   },
   "locale": "zh-CN",

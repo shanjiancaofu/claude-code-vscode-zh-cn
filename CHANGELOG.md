@@ -1,5 +1,15 @@
 # 更新日志 / Changelog
 
+## 0.1.2
+
+### 中文
+
+- 新增 VS Code Marketplace 扩展图标，并优化 README 的 Marketplace 安装与首次使用说明。
+
+### English
+
+- Added a Marketplace extension icon and improved the README installation and first-use instructions.
+
 ## 0.1.1
 
 ### 中文
